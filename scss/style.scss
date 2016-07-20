@@ -1,0 +1,30 @@
+body{
+  width:100%;
+  height:100vh;
+  background-image: url("http://amxxcs.ru/wp/vgnwpGb.jpg");
+  animation: anima-fundo  6s steps(190) infinite;
+}
+
+.personagem{
+  margin: auto;
+  position: relative;
+  top: 35%;
+}
+
+.animate{
+  width: 90px;
+	height: 90px;
+  background-image: url("http://www.appcycle.me/flappy/img/bird.png");
+  background-repeat: no-repeat;
+  animation:anima 0.3s steps(3) infinite;
+}
+
+@Keyframes anima{
+  from{background-position: 0px;}
+  to{background-position: -276px; }
+}
+
+@Keyframes anima-fundo{
+  from{background-position: 0px;}
+  to{background-position: -1920px; }
+}

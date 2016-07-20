@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.screen {
+  width: 100%;
+  height: 93vh;
+  background-image: url("http://mario5.florian-rappl.de/Content/backgrounds/01.png") ;
+  animation: anima-fundo 13s steps(500) infinite;
+}
+
+.personagem {
+  transition: all 0.09s linear;
+  position: relative;
+  left:10%;
+  top: 35%;
+}
+
+.animate {
+  width: 90px;
+  height: 90px;
+  background-image: url("http://www.appcycle.me/flappy/img/bird.png");
+  background-repeat: no-repeat;
+  animation: anima 0.3s steps(3) infinite;
+}
+
+.floor{
+  position: relative;
+  top:93vh;
+  width: 100%;
+  height: 7vh;
+  background-image: url("../assets/floor.png");
+  background-color: #934D2B;
+  animation: anima-floor 0.5s steps(500) infinite;
+}
+
+@Keyframes anima {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -276px;
+  }
+}
+@Keyframes anima-fundo {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -1024px;
+  }
+}
+
+@Keyframes anima-floor {
+  from {
+    background-position: 0 0px;
+  }
+  to {
+    background-position:  -100px 0;
+  }
+}
