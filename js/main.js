@@ -10,7 +10,7 @@ $( document ).ready(function(){
   /*  e.preventDefault();*/
     if(verificaTeto())
       if(e.which == 38)
-        sobe(veloci+10);
+        sobe(veloci+15);
 
       if(e.which == 40)
         desce(veloci);
@@ -66,7 +66,7 @@ $( document ).ready(function(){
   }
 
   function verificaTeto(){
-    return (parseInt($(".personagem").css("top")) > 15)
+    return (parseInt($(".personagem").css("top")) > 5)
   }
 
   function verificafundo(){
@@ -89,7 +89,47 @@ $( document ).ready(function(){
 
   //Queda do personagem
   setInterval(function(){
-    desce(10);
+    desce(15);
   },100)
 
 })
+console.log($(".object-die").css("top"));
+
+
+
+////Verifica Colis?es////
+setInterval(function(){
+  if( parseInt($(".personagem").css("top"))+parseInt($(".personagem").css("height")) == parseInt($(".object-die").css("top") )  ){
+    console.log("encostou");
+  }
+},1);
+
+
+//Movimenta objetos-die
+
+setInterval(function(){
+  var ant = parseInt($(".object-die").css("left"));
+  $(".object-die").css("left",ant-20+"px");
+},50);
+
+
+setInterval(function(){
+  $(".area-jogavel").append('<div class="object-die"></div>');
+},1000);
+
+
+$(document).keydown(function(event) {
+if (event.ctrlKey==true && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
+      return;
+     }
+    // 107 Num Key  +
+    // 109 Num Key  -
+    // 173 Min Key  hyphen/underscor Hey
+    // 61 Plus key  +/= key
+});
+
+$(window).bind('mousewheel DOMMouseScroll', function (event) {
+       if (event.ctrlKey == true) {
+       event.preventDefault();
+       }
+});
