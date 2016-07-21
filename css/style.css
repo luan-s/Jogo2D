@@ -1,7 +1,6 @@
 *{
   margin: 0;
   padding: 0;
-  transition: all 0.05s linear;
 }
 body{
   width: 100%;
@@ -20,7 +19,7 @@ body{
   transition: all 0.09s linear;
   position: relative;
   left:10%;
-  top: 35%;
+  top: 50%;
 }
 
 .animate {
@@ -42,6 +41,7 @@ body{
 }
 
 .object-die{
+  background-image: url("../assets/floor.png");
   border: 2px solid black;
   position: fixed;
   top:50vh;

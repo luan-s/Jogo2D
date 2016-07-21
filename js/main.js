@@ -1,7 +1,7 @@
 //// VARIAVEIS DE CONTROLE ////
 var movimento = true;
-var veloci = 35
-
+var veloci = 30
+var PERSONAGEM = $(".personagem");
 
 $( document ).ready(function(){
   $("body").keydown(function(e){
@@ -33,9 +33,9 @@ $( document ).ready(function(){
   });
 
   sobe = function(velocidade){
-    $(".personagem").css("transform","rotate(-20deg)");
-    var ant = parseInt($(".personagem").css("top"));
-    $(".personagem").css("top",ant-velocidade+"px");
+    PERSONAGEM.css("transform","rotate(-20deg)");
+    var ant = parseInt(PERSONAGEM.css("top"));
+    PERSONAGEM.css("top",ant-velocidade+"px");
     movimento = false;
   }
 
@@ -43,47 +43,46 @@ $( document ).ready(function(){
     if(!verificafundo()) return;
 
     if(movimento)
-      $(".personagem").css("transform","rotate(20deg)");
+      PERSONAGEM.css("transform","rotate(20deg)");
 
 
-    var ant = parseInt($(".personagem").css("top"));
-    $(".personagem").css("top",ant+velocidade+"px");
+    var ant = parseInt(PERSONAGEM.css("top"));
+    PERSONAGEM.css("top",ant+velocidade+"px");
   }
 
   esquerda = function(velocidade){
-    $(".personagem").css("transform","rotate(0deg)");
-    var ant = parseInt($(".personagem").css("left"));
-    $(".personagem").css("left",ant-velocidade+"px");
+    PERSONAGEM.css("transform","rotate(0deg)");
+    var ant = parseInt(PERSONAGEM.css("left"));
+    PERSONAGEM.css("left",ant-velocidade+"px");
     movimento = false;
   }
 
   direita = function(velocidade){
-    $(".personagem").css("transform","rotate(0deg)");
-    var ant = parseInt($(".personagem").css("left"));
-    $(".personagem").css("left",ant+velocidade+"px");
+    PERSONAGEM.css("transform","rotate(0deg)");
+    var ant = parseInt(PERSONAGEM.css("left"));
+    PERSONAGEM.css("left",ant+velocidade+"px");
     movimento = false;
 
   }
 
   function verificaTeto(){
-    return (parseInt($(".personagem").css("top")) > 5)
+    return (parseInt(PERSONAGEM.css("top")) > 5)
   }
-
   function verificafundo(){
-    return (parseInt($(".personagem").css("top")) < parseInt($("body").css("height")) - 150)
+    return (parseInt(PERSONAGEM.css("top")) < parseInt($("body").css("height")) - 150);
   }
 
   function verificaDireita(){
-    return (parseInt($(".personagem").css("left")) < parseInt($("body").css("width")) - 150)
+    return (parseInt(PERSONAGEM.css("left")) < parseInt($("body").css("width")) - 150);
   }
 
   function verificaEsquerda(){
-    return (parseInt($(".personagem").css("left")) > 20)
+    return (parseInt(PERSONAGEM.css("left")) > 20)
   }
 
   // Acerta angulo do personagem
   var acertaAgngulo = function(){
-    $(".personagem").css("transform","rotate(0deg)");
+    PERSONAGEM.css("transform","rotate(0deg)");
   };
 
 
@@ -95,41 +94,33 @@ $( document ).ready(function(){
 })
 console.log($(".object-die").css("top"));
 
-
-
 ////Verifica Colis?es////
 setInterval(function(){
-  if( parseInt($(".personagem").css("top"))+parseInt($(".personagem").css("height")) == parseInt($(".object-die").css("top") )  ){
+  var alturaPersonagem = parseInt(PERSONAGEM.css("top"))+parseInt(PERSONAGEM.css("height"));
+  var alturaBloco = parseInt($(".object-die").css("top") );
+  var rightSidePersonagem = parseInt(PERSONAGEM.css("left"))+parseInt(PERSONAGEM.css("width"));
+  var leftSideObjeto = parseInt($(".object-die").css("left"))
+  if(leftSideObjeto == rightSidePersonagem)
+    alert("canto");
+
+  if( alturaPersonagem  ==  alturaBloco ){
     console.log("encostou");
   }
 },1);
 
-
 //Movimenta objetos-die
-
 setInterval(function(){
+  $(".object-die").css("display","block");
   var ant = parseInt($(".object-die").css("left"));
-  $(".object-die").css("left",ant-20+"px");
-},50);
+  $(".object-die").css("left",ant-30+"px");
+
+  if(parseInt($(".object-die").css("left")) < 0 ){
+    $(".object-die").css("display","none");
+    $(".object-die").css("left","130%");
+  }
+},0.0001);
 
 
-setInterval(function(){
+/*setInterval(function(){
   $(".area-jogavel").append('<div class="object-die"></div>');
-},1000);
-
-
-$(document).keydown(function(event) {
-if (event.ctrlKey==true && (event.which == '61' || event.which == '107' || event.which == '173' || event.which == '109'  || event.which == '187'  || event.which == '189'  ) ) {
-      return;
-     }
-    // 107 Num Key  +
-    // 109 Num Key  -
-    // 173 Min Key  hyphen/underscor Hey
-    // 61 Plus key  +/= key
-});
-
-$(window).bind('mousewheel DOMMouseScroll', function (event) {
-       if (event.ctrlKey == true) {
-       event.preventDefault();
-       }
-});
+},1000);*/
