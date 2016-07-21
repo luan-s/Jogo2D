@@ -23,11 +23,11 @@ body{
 }
 
 .animate {
-  width: 90px;
-  height: 90px;
-  background-image: url("http://www.appcycle.me/flappy/img/bird.png");
+  width: 87px;
+  height: 64px;
+  background-image: url("../assets/frogs.png");
   background-repeat: no-repeat;
-  animation: anima 0.3s steps(3) infinite;
+  animation: anima 0.5s steps(8) infinite;
 }
 
 .floor{
@@ -65,7 +65,7 @@ body{
     background-position: 0px;
   }
   to {
-    background-position: -276px;
+    background-position: -695px;
   }
 }
 @Keyframes anima-fundo {
@@ -93,4 +93,11 @@ body{
   to {
     background-position:  -350px 0;
   }
+}
+
+
+@media screen and (max-width: 768px) {
+    .screen {
+        min-width: 768px;
+    }
 }
