@@ -60,6 +60,22 @@ body{
   animation: anima-clouds 1.5s steps(500) infinite;
 }
 
+.barraY{
+  position: relative;
+  height: 2px;
+  width: 100vw;
+  left:45%;
+  border: 1px solid black;
+}
+
+.barraX{
+  position: relative;
+  height: 100vh;
+  width: 2px;;
+  left:45%;
+  border: 1px solid black;
+}
+
 @Keyframes anima {
   from {
     background-position: 0px;
